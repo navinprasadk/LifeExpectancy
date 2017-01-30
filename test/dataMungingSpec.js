@@ -3,7 +3,7 @@ expect = require("chai").expect,
 sinon = require('sinon'),
 readline = require("readline"),
 fs=require("fs"),
-convert = require("../js/testCodeQuality");
+convert = require("../js/LifeExpectancy_Male_Female");
 
 describe("A series of test for Converting  CSV to JSON",
 	function(err){
@@ -30,7 +30,7 @@ describe("A series of test for Converting  CSV to JSON",
     });
 
    it('should not fail if the year is a literal number', function(done){
-        expect(convert.bind(undefined, '1960')).to.throw(Error, "Not a number");
+        expect(convert.bind(undefined, '1960')).to.not.throw(Error, "Not a number");
         done();
     });
 
