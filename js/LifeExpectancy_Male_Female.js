@@ -1,12 +1,3 @@
-module.exports = function LifeExpectancy_Male_Female(yyyy){
-  if(!yyyy)
-  {
-    throw new Error('Not a number');
-  }
-  if(isNaN(yyyy))
-  {
-    throw new Error('Not a number');
-  }
 let fs = require('fs');
 let re = require('readline');
 let lineReader = re.createInterface({
@@ -54,5 +45,3 @@ lineReader.on('line', function(chunk) {
 lineReader.on('close', function() {
     fs.writeFile('../outputdata/OutputJSONNavin1.json', JSON.stringify(output1));
 });
-return 'JSON written successfully';
-}
