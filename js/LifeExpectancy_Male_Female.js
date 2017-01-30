@@ -14,7 +14,6 @@ let asiancountry = ['China', 'India', 'Pakistan', 'Singapore', 'Sri Lanka',
 let le = ['SP.DYN.LE00.FE.IN', 'SP.DYN.LE00.MA.IN', 'SP.DYN.LE00.IN'];
 
 lineReader.on('line', function(chunk) {
-
     let split2 = chunk.trim().split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
     // To get the male life consistency
     for (let i = 0; i < asiancountry.length; i = i + 1) {

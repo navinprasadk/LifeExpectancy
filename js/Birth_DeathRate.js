@@ -14,7 +14,6 @@ let asiancountry = ['China', 'India', 'Pakistan', 'Singapore', 'Sri Lanka',
 let bdrate = ['SP.DYN.CBRT.IN', 'SP.DYN.CDRT.IN'];
 
 lineReader.on('line', function(chunk) {
-
     let split2 = chunk.trim().split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
     //  To get the birth rate
     for (let i = year; i < 2016; i = i + 1) {
@@ -43,5 +42,14 @@ lineReader.on('line', function(chunk) {
 });
 // Write the data on file
 lineReader.on('close', function() {
+  if(year === 2013)
+      {
+        let Object2 = {
+              'Year': year,
+              'Birth rate, crude (per 1,000 people)': brate,
+              'Death rate, crude (per 1,000 people)': drate
+          };
+          output2.push(Object2);
+      }
     fs.writeFile('../outputdata/OutputJSONNavin2.json', JSON.stringify(output2));
 });
