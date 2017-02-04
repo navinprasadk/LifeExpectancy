@@ -39,9 +39,9 @@ lineReader.on('line', function(chunk) {
     }
     if (year < split2[4] && (bdrate[0] === split2[3] || bdrate[1] === split2[3]) && year <= 2016) {
         object2 = {
-            'year': year,
-            'Birth rate, crude (per 1,000 people)': brate,
-            'Death rate, crude (per 1,000 people)': drate
+            year: year,
+            BirthRate: brate,
+            DeathRate: drate
         };
         // Pushing the data
         output2.push(object2);

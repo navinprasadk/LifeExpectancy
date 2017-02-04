@@ -29,9 +29,9 @@ lineReader.on('line', function(chunk) {
     }
     if (year < split2[4] && (le[0] === split2[3] || le[1] === split2[3]) && year <= 2016) {
         object = {
-            'year': year,
-            'Life expectancy at birth, male (years)': sum,
-            'Life expectancy at birth, female (years)': sum1
+            year: year,
+            male: sum,
+            female: sum1
         };
         year = year + 1;
         // Pushing the data
@@ -42,5 +42,14 @@ lineReader.on('line', function(chunk) {
 });
 // Write the data on file
 lineReader.on('close', function() {
+  if(year === 2013)
+      {
+        object = {
+            year: year,
+            male: sum,
+            female: sum1
+          };
+          output1.push(object);
+      }
     fs.writeFile('../outputdata/OutputJSONNavin1.json', JSON.stringify(output1));
 });
