@@ -9,21 +9,21 @@ let sum = 0;
 let sum1 = 0;
 let year = 1960;
 let object = {};
-let asiancountry = ['China', 'India', 'Pakistan', 'Singapore', 'Sri Lanka',
+let asianCountry = ['China', 'India', 'Pakistan', 'Singapore', 'Sri Lanka',
  'Thailand', 'Philippines', 'Israel', 'Indonesia', 'Iraq'];
 let le = ['SP.DYN.LE00.FE.IN', 'SP.DYN.LE00.MA.IN', 'SP.DYN.LE00.IN'];
 
 lineReader.on('line', function(chunk) {
     let split2 = chunk.trim().split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
     // To get the male life consistency
-    for (let i = 0; i < asiancountry.length; i = i + 1) {
-            if (asiancountry[i] === split2[0] && le[1] === split2[3]) {
+    for (let i = 0; i < asianCountry.length; i = i + 1) {
+            if (asianCountry[i] === split2[0] && le[1] === split2[3]) {
             sum = sum + Math.round(split2[5]);
         }
     }
     // To get the female life consistency
-    for (let i = 0; i < asiancountry.length; i = i + 1) {
-        if (asiancountry[i] === split2[0] && le[0] === split2[3]) {
+    for (let i = 0; i < asianCountry.length; i = i + 1) {
+        if (asianCountry[i] === split2[0] && le[0] === split2[3]) {
             sum1 = sum1 + Math.round(split2[5]);
         }
     }
