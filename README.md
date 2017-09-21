@@ -1,4 +1,7 @@
-# JS Boilerplate Code
+# Data Munging Tool
+
+ It shows the Life Expectancy of Male, Female and also Birth  Rate, Death Rate in charts
+ 
 
 ## Supports
 - eslint
@@ -17,7 +20,7 @@ Install mocha globally for TDD/BDD
 
 	$ sudo npm install mocha -g
 
-Install gulp globally 
+Install gulp globally
 
 	$ sudo npm install gulp -g
 

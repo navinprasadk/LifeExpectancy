@@ -1,28 +1,32 @@
 body {
   font: 10px sans-serif;
 }
+
+
 /*.axis path, .axis line {
     fill: none;
     stroke: #000;
     shape-rendering: crispEdges;
 }*/
+
 .x.axis path {
-    display: none;
-}
-.line {
-    fill: none;
-    stroke-width: 1.5px;
-}
-path {
-	stroke: steelblue;
-	stroke-width: 2;
-	fill: none;
+  display: none;
 }
 
-.axis path,
-.axis line {
-	fill: none;
-	stroke: grey;
-	stroke-width: 1;
-	shape-rendering: crispEdges;
+.line {
+  fill: none;
+  stroke-width: 1.5px;
+}
+
+path {
+  stroke: steelblue;
+  stroke-width: 2;
+  fill: none;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: grey;
+  stroke-width: 1;
+  shape-rendering: crispEdges;
 }

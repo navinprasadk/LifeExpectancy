@@ -1,55 +1,62 @@
 let fs = require('fs');
 let re = require('readline');
-let lineReader = re.createInterface({
-    input: fs.createReadStream('../inputdata/Indicators.csv')
-});
+let lineReader = re.createInterface({input: fs.createReadStream('../inputdata/Indicators.csv')});
 // Initializing variables
 let output1 = [];
 let sum = 0;
 let sum1 = 0;
 let year = 1960;
 let object = {};
-let asianCountry = ['China', 'India', 'Pakistan', 'Singapore', 'Sri Lanka',
- 'Thailand', 'Philippines', 'Israel', 'Indonesia', 'Iraq'];
+let asianCountry = [
+  'China',
+  'India',
+  'Pakistan',
+  'Singapore',
+  'Sri Lanka',
+  'Thailand',
+  'Philippines',
+  'Israel',
+  'Indonesia',
+  'Iraq'
+];
 let le = ['SP.DYN.LE00.FE.IN', 'SP.DYN.LE00.MA.IN', 'SP.DYN.LE00.IN'];
 
 lineReader.on('line', function(chunk) {
-    let split2 = chunk.trim().split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
-    // To get the male life consistency
-    for (let i = 0; i < asianCountry.length; i = i + 1) {
-            if (asianCountry[i] === split2[0] && le[1] === split2[3]) {
-            sum = sum + Math.round(split2[5]);
-        }
+  let split2 = chunk.trim().split(/,(?=(?:(?:[^"]*"){2})*[^"]*$)/);
+  // To get the male life consistency
+  for (let i = 0; i < asianCountry.length; i = i + 1) {
+    if (asianCountry[i] === split2[0] && le[1] === split2[3]) {
+      sum = sum + Math.round(split2[5]);
     }
-    // To get the female life consistency
-    for (let i = 0; i < asianCountry.length; i = i + 1) {
-        if (asianCountry[i] === split2[0] && le[0] === split2[3]) {
-            sum1 = sum1 + Math.round(split2[5]);
-        }
+  }
+  // To get the female life consistency
+  for (let i = 0; i < asianCountry.length; i = i + 1) {
+    if (asianCountry[i] === split2[0] && le[0] === split2[3]) {
+      sum1 = sum1 + Math.round(split2[5]);
     }
-    if (year < split2[4] && (le[0] === split2[3] || le[1] === split2[3]) && year <= 2016) {
-        object = {
-            year: year,
-            male: sum,
-            female: sum1
-        };
-        year = year + 1;
-        // Pushing the data
-        output1.push(object);
-        sum = 0;
-        sum1 = 0;
-    }
+  }
+  if (year < split2[4] && (le[0] === split2[3] || le[1] === split2[3]) && year <= 2016) {
+    object = {
+      year: year,
+      male: sum,
+      female: sum1
+    };
+    year = year + 1;
+    // Pushing the data
+    output1.push(object);
+    sum = 0;
+    sum1 = 0;
+  }
 });
 // Write the data on file
 lineReader.on('close', function() {
-  if(year === 2013)
-      {
-        object = {
-            year: year,
-            male: sum,
-            female: sum1
-          };
-          output1.push(object);
-      }
-    fs.writeFile('../outputdata/OutputJSONNavin1.json', JSON.stringify(output1));
+  if (year === 2013) {
+    object = {
+      year: year,
+      male: sum,
+      female: sum1
+    };
+    output1.push(object);
+  }
+  fs.writeFile('../outputdata/OutputJSONNavin1.json', JSON.stringify(output1));
 });
